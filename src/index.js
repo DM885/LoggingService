@@ -2,7 +2,7 @@ import rapid from "@ovcina/rapidriver";
 import helpers from './helpers.js';
 
 export function format(log){
-  let str = "Log starts here ";
+  let str = "";
   // format should thoughn an eroror if the log is not an array or empty
   if(!Array.isArray(log) || log.length === 0){
     throw 500;
@@ -22,7 +22,7 @@ export function format(log){
 
 export async function savelog(msg){
   
-  const log = await helpers.query("INSERT INTO `logs` (`userId`, `sessionId`, `requestId`, `logPath`, `timestamp`) VALUES (?, ?, ?, ?, ?)", [msg.userId, msg.sessionId, msg.requestId, format(msg.logPath), Date.now()]);
+  const log = await helpers.query("INSERT INTO `logs` (`userId`, `sessionId`, `requestId`, `logPath`, `timestamp`) VALUES (?, ?, ?, ?, ?)", [msg.userId, msg.sessionId, msg.requestId, "Log starts here " + format(msg.logPath), Date.now()]);
 
   if (log == false){
       
