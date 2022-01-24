@@ -2,7 +2,7 @@ import rapid from "@ovcina/rapidriver";
 import helpers from './helpers.js';
 
 export function format(log){
-  let str = "";
+  let str = "Log starts here ";
   // format should thoughn an eroror if the log is not an array or empty
   if(!Array.isArray(log) || log.length === 0){
     throw 500;
